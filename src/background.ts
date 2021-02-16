@@ -11,8 +11,7 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } },
 ]);
 
-/** @type {BrowserWindow | null} */
-let win = null;
+let win: BrowserWindow | null = null;
 
 async function createWindow() {
   // Create the browser window.
@@ -41,7 +40,9 @@ async function createWindow() {
     win.loadURL('app://./index.html');
   }
 
-  const template = [{ role: 'editMenu' }];
+  const template: Electron.MenuItemConstructorOptions[] = [
+    { role: 'editMenu' },
+  ];
   if (process.platform === 'darwin') {
     template.unshift({ role: 'appMenu' });
   } else {

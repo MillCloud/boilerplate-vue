@@ -4,21 +4,22 @@
 
 boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮助你快速搭建网页。当然，也希望能引导你更进一步地了解 vue 生态。
 
-当前是 vue2 分支。要查看 vue3 模板，请切换到 vue3 分支。
+当前是 vue3 分支，**暂未稳定**。要查看 vue2 模板，请切换到 vue2 分支。
 
 ### 主要依赖
 
-- [vue2](https://cn.vuejs.org)
-- [vue-cli](https://cli.vuejs.org/zh/)
-- [vue-router](https://router.vuejs.org/zh/)
-- [vuex](https://vuex.vuejs.org/zh/)
+- [typescript](https://www.typescriptlang.org/)
+- [vue3](https://v3.cn.vuejs.org)
+- [vue-cli](https://next.cli.vuejs.org/zh/)
+- [vue-router](https://next.router.vuejs.org/zh/)
+- [vuex](https://next.vuex.vuejs.org/)
+- [vue-use](https://vueuse.js.org/)
 - [mitt](https://github.com/developit/mitt#readme)
 - [electron](https://www.electronjs.org/)
 - [electron-builder](https://www.electron.build/)
 - [vue-i18n](https://kazupon.github.io/vue-i18n/zh/)
 - [axios](https://github.com/axios/axios#readme)
-- [vuetify](https://vuetifyjs.com/)
-- [portal-vue](https://portal-vue.linusb.org/)
+- [element-plus](https://element-plus.org/) - 之后会切换到 vuetify v3
 - [better-scroll](https://better-scroll.github.io/docs/zh-CN/guide/)
 - [lodash](https://lodash.com/)
 - [xe-utils](https://github.com/x-extends/xe-utils#readme)
@@ -166,10 +167,14 @@ yarn dev
 .
 ├── public
 ├── src
-│   ├── apis                    # 接口目录
 │   ├── assets                  # 资产目录
 │   ├── components              # 全局组件目录
-│   ├── directives              # 全局指令目录
+│   ├── composables             # 组合式函数目录
+│   │   ├── apis                # 请求接口的组合式函数目录
+│   │   ├── index.ts            # 组合式函数入口
+│   │   ├── useAxios.ts         # 进一步封装 vue-use useAxios
+│   │   ├── useLanguage.ts      # 获取和设置语言的组合式函数目录
+│   │   └── useToken.ts         # 获取和设置登录态的组合式函数目录
 │   ├── i18n                    # 国际化目录
 │   ├── layout                  # 布局目录
 │   ├── plugins                 # 插件目录
@@ -179,12 +184,12 @@ yarn dev
 │   ├── utils                   # 工具方法目录
 │   ├── views                   # 页面视图目录
 │   ├── App.vue
-│   ├── background.js           # electron 主进程文件
-│   ├── guard.js                # 导航守卫
-│   ├── main.js
-│   └── preload.js              # electron 预加载文件
+│   ├── background.ts           # electron 主进程文件
+│   ├── guard.ts                # 导航守卫
+│   ├── main.ts
+│   └── preload.ts              # electron 预加载文件
 ├── tests                       # 测试内容文件夹
-├── typings                     # typescript 定义文件夹，为未来迁移做准备
+├── typings                     # typescript 定义文件夹
 ├── .browserslistrc             # 浏览器支持列表文件
 ├── .editorconfig
 ├── .env                        # 所有环境都载入的环境变量
@@ -249,39 +254,23 @@ staging 模式下，这个环境变量文件会被载入。
 
 你可以在上面两个文件里加入你需要的字段以支持翻译，务必注意字段需要保持一致，也请注意合理地划分字段。
 
-而要引入和 vue2 强绑定的 npm 库的语言包，你可以在 [@/i18n/index.js](./src/i18n/index.js) 内操作。目前已经为 vuetify 添加了语言包，你可以参考着为其他和 vue2 强绑定的 npm 库添加语言包。
+而要引入和 vue3 强绑定的 npm 库的语言包，你可以在 [@/i18n/index.js](./src/i18n/index.js) 内操作。目前已经为 element-plus 添加了语言包，你可以参考着为其他和 vue3 强绑定的 npm 库添加语言包。
 
-引入和 vue2 不强绑定的 npm 库的语言包，请查看它们的文档说明。
+引入和 vue3 不强绑定的 npm 库的语言包，请查看它们的文档说明。
 
 ### 路由配置
 
-模板把路由分成了两类，一类是静态路由，一类是动态路由。
-
-#### 静态路由
-
-静态路由是无论什么情况都能够被访问的路由。模板内置了两个静态路由 Index 和 Home。
-
-#### 动态路由
-
-而动态路由是需要手动添加的路由，有可能你需要根据用户角色来选择性添加，也有可能你会直接添加。模板内置了一个动态路由 404 用于访问页面兜底。另外，模板给出了筛选动态路由的[示例方法](./src/router/routes.js)。
+TODO
 
 ### 状态管理配置
 
-模板把状态管理分成了两类，一类是应用类状态，一类是业务类状态。
-
-#### 应用类状态
-
-应用类状态是应用本身的状态，包括应用是否处于 electron 环境，应用当前语言等。
-
-#### 业务类状态
-
-业务类状态是应用所承载的业务的状态，包括用户信息，页面通用数据等。模板建议把业务类状态分模块放置。
+TODO
 
 ### 请求配置
 
 #### axios 封装
 
-模板封装了 axios，并将 `$request` 绑定到 vue 实例上。你可以修改[封装文件](./src/plugins/request.js)默认的配置以匹配业务。
+模板封装了 vue-use 提供的 useAxios 组合式函数。你可以修改[封装文件](./src/plugins/request.js)默认的配置以匹配业务。
 
 #### proxy
 
@@ -289,17 +278,13 @@ staging 模式下，这个环境变量文件会被载入。
 
 理论上，devServer.proxy 应该与 production 运行模式下的 `VUE_APP_BASE_URL` 一致。
 
-#### 取消请求
-
-考虑到取消请求的情况较少，建议手动在需要取消请求的部分添加，可以参考 [api 示例](./src/apis/user.js)。
-
 ### 布局
 
-模板内使用了 vuetify 提供的[默认布局](./src/layout/index.vue)。
+模板内使用 element-plus 实现了 vuetify 提供的[默认布局](./src/layout/index.vue)。
 
 常见的布局可以参考 [Ant Design 示例](https://ant-design.gitee.io/components/layout-cn/)，你可以修改布局组件的属性，或添加对应的样式来调整布局。你也可以参考 vuetify 官网。
 
-我们会试图让布局适用于所有页面。试想这么一个情况：登录页面只显示 `v-main` 部分，而在其它页面显示所有部分。直接使用默认布局是不能实现的，所以有必要根据不同的路由来调整布局组件，只需要获取当前路由信息并加以判断即可。
+我们会试图让布局适用于所有页面。试想这么一个情况：登录页面只显示 `el-main` 部分，而在其它页面显示所有部分。直接使用默认布局是不能实现的，所以有必要根据不同的路由来调整布局组件，只需要获取当前路由信息并加以判断即可。
 
 我们也可能根据用户角色生成路由和侧边栏，模板内置的该部分功能较为薄弱，且思路源自 vue-element-admin，请查看 vue-element-admin [路由和侧边栏](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html)和[权限验证](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/permission.html)阐述的思路。
 

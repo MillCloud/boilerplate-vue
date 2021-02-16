@@ -1,17 +1,22 @@
 <template>
-  <v-app>
-    <v-app-bar app flat>
-      <span class="mr-8 title">boilerplate-vue</span>
-      <router-link to="/" exact>Index</router-link>
-      <router-link to="/home" exact class="ml-2">Home</router-link>
-    </v-app-bar>
-    <v-navigation-drawer app>
-      <v-toolbar flat>
-        <v-toolbar-title class="title">boilerplate-vue</v-toolbar-title>
-      </v-toolbar>
-    </v-navigation-drawer>
+  <el-container>
+    <el-aside>
+      <div class="toolbar">
+        <div class="toolbar-content">
+          <div class="title">boilerplate-vue</div>
+        </div>
+      </div>
+      <div class="el-aside-border"></div>
+    </el-aside>
+    <el-header class="toolbar">
+      <div class="toolbar-content">
+        <span class="mr-8 title">boilerplate-vue</span>
+        <router-link to="/" exact>Index</router-link>
+        <router-link to="/home" exact class="ml-2">Home</router-link>
+      </div>
+    </el-header>
     <router-view />
-    <v-footer app class="justify-center">
+    <el-footer class="justify-center">
       <a
         class="mx-2"
         href="https://github.com/MillCloud/boilerplate-vue#readme"
@@ -28,6 +33,14 @@
       >
         Gitee
       </a>
-    </v-footer>
-  </v-app>
+    </el-footer>
+  </el-container>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Layout',
+});
+</script>

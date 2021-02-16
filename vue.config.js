@@ -45,10 +45,10 @@ module.exports = {
             priority: 10,
             test: /[/\\]node_modules[/\\]/,
           },
-          vuetify: {
-            name: 'chunk-vuetify',
+          'element-plus': {
+            name: 'chunk-element-plus',
             priority: 20,
-            test: /[/\\]node_modules[/\\]_?vuetify(.*)/,
+            test: /[/\\]node_modules[/\\]_?element-plus(.*)/,
           },
           components: {
             minChunks: 2,
@@ -73,7 +73,7 @@ module.exports = {
   },
   pluginOptions: {
     electronBuilder: {
-      preload: path.resolve('src', 'preload.js'),
+      preload: path.resolve('src', 'preload.ts'),
       builderOptions: {
         appId: '',
         productName: '',
@@ -100,8 +100,8 @@ module.exports = {
       fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'zh-Hans',
       localeDir: 'i18n/locales',
       enableInSFC: false,
+      enableLegacy: false,
     },
   },
   publicPath: process.env.VUE_APP_PUBLIC_PATH || '/',
-  transpileDependencies: ['vuetify'],
 };

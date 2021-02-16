@@ -1,7 +1,10 @@
 /* eslint-disable no-lonely-if */
 import nprogress from 'nprogress';
-import router from './router';
-import store from './store';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+const router = useRouter();
+const store = useStore();
 
 router.beforeEach(async (to, from, next) => {
   // if (process.env.NODE_ENV === 'development') {
