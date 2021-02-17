@@ -296,7 +296,7 @@ TODO
 
 ### VSCode 支持
 
-你可以参考[插件](https://www.yuque.com/modyqyw/environment/skhbfr) 和 [settings.json](https://www.yuque.com/modyqyw/environment/aozv2q)。
+你可以参考[插件](https://www.yuque.com/modyqyw/environment/skhbfr)和 [settings.json](https://www.yuque.com/modyqyw/environment/aozv2q)。
 
 ### 测试
 
