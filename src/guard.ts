@@ -1,9 +1,8 @@
 /* eslint-disable no-lonely-if */
 import nprogress from 'nprogress';
-import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
+import router from './router';
 
-const router = useRouter();
 const store = useStore();
 
 router.beforeEach(async (to, from, next) => {
