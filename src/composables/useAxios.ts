@@ -82,15 +82,13 @@ const defaultConfig: AxiosRequestConfig = {
   validateStatus: handleValidateStatusCode,
 };
 
-axios.interceptors.request.use((config) => {
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      'X-Token': useToken().token.value,
-    },
-  };
-});
+axios.interceptors.request.use((config) => ({
+  ...config,
+  headers: {
+    ...config.headers,
+    'X-Token': useToken().token.value,
+  },
+}));
 
 axios.interceptors.response.use(
   (response) => {
