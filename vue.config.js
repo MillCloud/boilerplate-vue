@@ -75,14 +75,17 @@ module.exports = {
     electronBuilder: {
       preload: path.resolve('src', 'preload.ts'),
       builderOptions: {
+        // eslint-disable-next-line no-template-curly-in-string
+        artifactName: '${productName}-${version}-${os}-${arch}.${ext}',
         appId: '',
         productName: '',
         copyright: '',
+        icon: path.resolve('src', 'assets', 'app.png'),
         mac: {
-          icon: path.resolve('src', 'assets', 'app.png'),
+          target: [{ target: 'dmg', arch: ['x64'] }],
         },
         win: {
-          icon: path.resolve('src', 'assets', 'app.png'),
+          target: [{ target: 'nsis', arch: ['x64', 'ia32'] }],
         },
         nsis: {
           oneClick: false,
@@ -91,7 +94,7 @@ module.exports = {
           allowToChangeInstallationDirectory: true,
         },
         linux: {
-          icon: path.resolve('src', 'assets', 'app.png'),
+          target: [{ target: 'AppImage', arch: ['x64'] }],
         },
       },
     },

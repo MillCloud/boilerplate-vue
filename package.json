@@ -2,13 +2,19 @@
   "name": "boilerplate-vue",
   "version": "0.0.0",
   "private": true,
+  "description": "A boilerplate for vue3",
+  "author": {
+    "email": "",
+    "name": "",
+    "url": ""
+  },
   "scripts": {
     "dev": "vue-cli-service serve --mode development",
     "staging-build": "vue-cli-service build --mode staging --report",
     "build": "vue-cli-service build --mode production --report",
     "electron:dev": "vue-cli-service electron:serve",
-    "electron:staging-build": "vue-cli-service electron:build --report --mode staging -m -w -l --x64",
-    "electron:build": "vue-cli-service electron:build --report -m -w -l --x64",
+    "electron:staging-build": "vue-cli-service electron:build --report --mode staging -m -w -l",
+    "electron:build": "vue-cli-service electron:build --report -m -w -l",
     "check": "ncu",
     "commit": "cz",
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/i18n/locales/**/*.json\"",
