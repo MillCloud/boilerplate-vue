@@ -82,7 +82,7 @@ module.exports = {
         copyright: '',
         icon: path.resolve('src', 'assets', 'app.png'),
         mac: {
-          target: [{ target: 'dmg', arch: ['x64'] }],
+          target: [{ target: 'dmg', arch: ['x64', 'arm64'] }],
         },
         win: {
           target: [{ target: 'nsis', arch: ['x64', 'ia32'] }],
