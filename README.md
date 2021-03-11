@@ -75,6 +75,8 @@ npm i -g yarn --registry=https://registry.npm.taobao.org
 brew install git
 # 不自动转换换行符
 git config --global core.autocrlf false
+# 设置默认分支名为 main
+git config --global init.defaultBranch main
 
 ```
 
@@ -94,6 +96,8 @@ choco install git
 ```sh
 # 不自动转换换行符
 git config --global core.autocrlf false
+# 设置默认分支名为 main
+git config --global init.defaultBranch main
 # 设置 nvm 镜像
 nvm node_mirror https://npm.taobao.org/mirrors/node/
 # 安装 node@12
