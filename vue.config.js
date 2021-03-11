@@ -76,13 +76,13 @@ module.exports = {
       preload: path.resolve('src', 'preload.ts'),
       builderOptions: {
         // eslint-disable-next-line no-template-curly-in-string
-        artifactName: '${productName}-${version}-${os}-${arch}.${ext}',
+        artifactName: '${productName}_${version}_${os}_${arch}.${ext}',
         appId: '',
         productName: '',
         copyright: '',
         icon: path.resolve('src', 'assets', 'app.png'),
         mac: {
-          target: [{ target: 'dmg', arch: ['x64', 'arm64'] }],
+          target: [{ target: 'dmg', arch: ['x64', 'arm64', 'universal'] }],
         },
         win: {
           target: [{ target: 'nsis', arch: ['x64', 'ia32'] }],
