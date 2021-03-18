@@ -25,7 +25,7 @@ boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮�
 - [xe-utils](https://github.com/x-extends/xe-utils#readme)
 - [dayjs](https://dayjs.gitee.io/zh-CN/)
 - [nprogress](https://ricostacruz.com/nprogress/)
-- [faker.js](https://github.com/marak/Faker.js/#readme)
+- [mock.js](http://mockjs.com/)
 - [sass](https://sass-lang.com/) - 使用了 [dart-sass](https://sass-lang.com/dart-sass)
 - [jest](https://jestjs.io/)
 - [commitizen](http://commitizen.github.io/cz-cli/)
