@@ -47,13 +47,13 @@
     "vue-i18n": "~9.0.0",
     "vue-router": "~4.0.0",
     "vuex": "~4.0.0",
-    "xe-utils": "~3.1.11"
+    "xe-utils": "~3.1.12"
   },
   "devDependencies": {
     "@commitlint/cli": "~12.0.1",
     "@intlify/vue-i18n-loader": "~2.0.3",
     "@ls-lint/ls-lint": "~1.9.2",
-    "@modyqyw/fabric": "~1.22.1",
+    "@modyqyw/fabric": "~1.24.0",
     "@types/electron-devtools-installer": "~2.2.0",
     "@types/jest": "~26.0.21",
     "@types/lodash-es": "~4.17.4",
