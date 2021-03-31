@@ -26,7 +26,8 @@
     "lint:style": "stylelint ./**/*.{css,less,sass,scss,vue} --fix",
     "lint:ls": "ls-lint .",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "prepare": "is-ci || husky install"
   },
   "main": "background.js",
   "dependencies": {
@@ -100,17 +101,5 @@
   },
   "engines": {
     "node": ">=12 <13"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "yarn lint:ls && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.json": "prettier --write",
-    "*.md": "markdownlint --fix && lint-md --fix",
-    "*.{js,jsx,ts,tsx,vue}": "vue-cli-service lint --fix",
-    "*.{css,less,scss,vue}": "stylelint --fix"
   }
 }
