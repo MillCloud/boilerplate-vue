@@ -6,8 +6,5 @@ module.exports = {
     '@u/(.*)$': '<rootDir>/src/utils/$1',
     '@/(.*)$': '<rootDir>/src/$1',
   },
-  transform: {
-    '^.+\\.vue$': 'vue-jest',
-  },
   transformIgnorePatterns: ['/node_modules/(?!lodash-es)'],
 };
