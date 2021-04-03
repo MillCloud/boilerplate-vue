@@ -24,10 +24,8 @@ module.exports = {
       }),
     );
     config.resolve.alias = {
+      ...config.resolve.alias,
       '@': path.resolve('src'),
-      '@a': path.resolve('src', 'assets'),
-      '@c': path.resolve('src', 'components'),
-      '@u': path.resolve('src', 'utils'),
     };
     if (process.env.NODE_ENV !== 'development') {
       config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
