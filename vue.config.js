@@ -16,25 +16,24 @@ const arrGZipExtension = [
 ];
 
 module.exports = {
-  configureWebpack: (config) => {
-    config.plugins.push(
-      new StylelintPlugin({
+  chainWebpack: (config) => {
+    config.plugin('stylelint').use(StylelintPlugin, [
+      {
         files: ['src/**/*.{css,less,sass,scss,vue}'],
         fix: true,
-      }),
-    );
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@': path.resolve('src'),
-    };
-    if (process.env.NODE_ENV !== 'development') {
-      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
-      config.plugins.push(
-        new CompressionPlugin({
-          test: new RegExp(`\\.(${arrGZipExtension.join('|')})$`),
-        }),
-      );
-      config.optimization.splitChunks = {
+      },
+    ]);
+    config.when(process.env.NODE_ENV === 'production', (config_) => {
+      config_
+        .plugin('compression')
+        .use(CompressionPlugin, [
+          { test: new RegExp(`\\.(${arrGZipExtension.join('|')})$`) },
+        ]);
+      config_.optimization.minimizer('terser').tap((args) => {
+        args[0].terserOptions.compress.drop_console = true;
+        return args;
+      });
+      config_.optimization.splitChunks({
         chunks: 'all',
         cacheGroups: {
           vendors: {
@@ -56,8 +55,8 @@ module.exports = {
             test: path.resolve('src', 'components'),
           },
         },
-      };
-    }
+      });
+    });
   },
   css: {
     loaderOptions: {
