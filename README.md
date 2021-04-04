@@ -232,7 +232,7 @@ yarn dev
 
 它里面包含了两个国际化变量 `VUE_APP_I18N_LOCALE` 和 `VUE_APP_I18N_FALLBACK_LOCALE`，值都是 `zh-Hans`，表示默认使用简体中文。
 
-另外，它还包含了请求变量 `VUE_APP_TIMEOUT`，用于指定请求的超时时间，值为 `10000`，表示 10 秒超时。
+另外，它还包含了请求变量 `VUE_APP_REQUEST_TIMEOUT`，用于指定请求的超时时间，值为 `10000`，表示 10 秒超时。
 
 #### .env.staging
 
