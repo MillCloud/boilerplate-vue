@@ -280,7 +280,7 @@ TODO
 
 在 development 模式下请求服务器往往会出现跨域问题，因此模板内已经设置了 devServer.proxy，见 [vue.config.js](./vue.config.js) L72。
 
-理论上，devServer.proxy 应该与 production 运行模式下的 `VUE_APP_BASE_URL` 一致。
+理论上，devServer.proxy 应该与 production 运行模式下的 `VUE_APP_REQUEST_BASE_URL` 一致。
 
 ### 布局
 
