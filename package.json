@@ -31,11 +31,10 @@
   },
   "main": "background.js",
   "dependencies": {
-    "@vueuse/core": "~4.6.3",
-    "@vueuse/integrations": "~4.6.3",
-    "@vueuse/router": "~4.6.3",
+    "@vueuse/core": "~4.6.4",
+    "@vueuse/integrations": "~4.6.4",
+    "@vueuse/router": "~4.6.4",
     "axios": "~0.21.1",
-    "better-scroll": "~2.2.1",
     "core-js": "~3.10.0",
     "dayjs": "~1.10.4",
     "element-plus": "~1.0.2-beta.36",
@@ -48,12 +47,12 @@
     "vue-i18n": "~9.0.0",
     "vue-router": "~4.0.0",
     "vuex": "~4.0.0",
-    "xe-utils": "~3.1.12"
+    "xe-utils": "~3.1.13"
   },
   "devDependencies": {
     "@babel/core": "~7.13.14",
     "@babel/eslint-parser": "~7.13.14",
-    "@commitlint/cli": "~12.0.1",
+    "@commitlint/cli": "~12.1.1",
     "@intlify/vue-i18n-loader": "~2.0.3",
     "@ls-lint/ls-lint": "~1.9.2",
     "@modyqyw/fabric": "~1.25.4",
