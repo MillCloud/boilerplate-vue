@@ -2,9 +2,9 @@
 
 ## 简介
 
-boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮助你快速搭建网页。当然，也希望能引导你更进一步地了解 vue 生态。
+`boilerplate-vue` 是一个面向中国用户的简单 `vue` 模板，目标是帮助你快速搭建桌面端网页/桌面端应用/移动端网页。当然，也希望能引导你更进一步地了解 `vue` 生态。
 
-当前是 vue3 分支，**暂未稳定**。要查看 vue2 模板，请切换到 vue2 分支。
+当前是 `vue3` 分支，**暂未稳定**。要查看 `vue2` 模板，请切换到 `vue2` 分支。
 
 ### 主要依赖
 
@@ -19,8 +19,7 @@ boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮�
 - [electron-builder](https://www.electron.build/)
 - [vue-i18n](https://kazupon.github.io/vue-i18n/zh/)
 - [axios](https://github.com/axios/axios#readme)
-- [element-plus](https://element-plus.org/) - 之后会切换到 vuetify v3
-- [better-scroll](https://better-scroll.github.io/docs/zh-CN/guide/)
+- [element-plus](https://element-plus.org/) - 模板之后会切换到 `vuetify3`，你可以考虑使用 [element-plus](https://element-plus.org/#/zh-CN) / [and-vue2](https://2x.antdv.com/docs/vue/introduce-cn) + [nut-ui3](https://nutui.jd.com/3x/)
 - [lodash](https://lodash.com/)
 - [xe-utils](https://github.com/x-extends/xe-utils#readme)
 - [dayjs](https://dayjs.gitee.io/zh-CN/)
@@ -32,6 +31,7 @@ boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮�
 - [commitlint](https://commitlint.js.org/)
 - [prettier](https://prettier.io/)
 - [markdownlint](https://github.com/igorshubovych/markdownlint-cli#readme)
+- [lint-md](https://github.com/lint-md/lint-md#readme)
 - [eslint](https://eslint.org/)
 - [stylelint](https://stylelint.io/)
 - [ls-lint](https://ls-lint.org/)
@@ -40,11 +40,11 @@ boilerplate-vue 是一个面向中国用户的简单 vue 模板，目标是帮�
 - [@modyqyw/fabric](https://github.com/ModyQyW/fabric#readme)
 - [npm-check-updates](https://github.com/raineorshine/npm-check-updates#readme)
 
-请先阅读上面的文档，并确保你对 node 和 npm 有基本的理解。
+请先阅读上面的文档，并确保对 `node` 和 `npm` 有 [基本了解](http://nodejs.cn/learn)。
 
 ## 起步
 
-这部分说明将让你得到能在本地运行的项目副本以开始开发。有关如何部署项目，请阅读[部署部分](#部署)。
+这部分说明将让你得到能在本地运行的项目副本以开始开发。有关如何部署项目，请阅读 [部署部分](#部署)。
 
 ### 准备
 
@@ -66,7 +66,10 @@ npm i -g yarn --registry=https://registry.npm.taobao.org
 
 ```
 
-接着，请参考[清华大学开源软件镜像站 Homebrew / Linuxbrew 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)安装 Homebrew。
+接着，请参考以下任一帮助安装 Homebrew。
+
+- [清华大学开源软件镜像站 Homebrew / Linuxbrew 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
+- [中国科学技术大学开源镜像站 Homebrew 源使用帮助](https://mirrors.ustc.edu.cn/help/brew.git.html)
 
 最后，安装 Git 并修改默认配置。
 
@@ -84,11 +87,17 @@ git config --global init.defaultBranch main
 
 首先安装 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip) 和 [Git](https://git-scm.com/downloads)。
 
-如果你正在使用 [Chocolatey](https://chocolatey.org/)，你也可以通过命令安装。
+如果你正在使用 [Chocolatey](https://chocolatey.org/) 或 [Scoop](https://scoop.sh/)，你也可以通过命令安装。
 
 ```sh
+# 使用 Chocolatey
 choco install nvm
 choco install git
+
+# 使用 Scoop
+scoop install nvm
+scoop install git
+
 ```
 
 然后配置即可。
@@ -101,9 +110,9 @@ git config --global init.defaultBranch main
 # 设置 nvm 镜像
 nvm node_mirror https://npm.taobao.org/mirrors/node/
 # 安装 node@12
-nvm install 12.20.2
+nvm install 12.22.0
 # 使用 node@12
-nvm use 12.20.2
+nvm use 12.22.0
 # 安装 yarn
 npm i -g yarn --registry=https://registry.npm.taobao.org
 
@@ -126,7 +135,7 @@ yarn dev
 
 ```
 
-如果一切正常，此时模板已经启动了，你可以正式开始你的开发。但如果你想通过文档了解更多，请先阅读[主要依赖](#主要依赖)内链接对应的文档，再继续阅读下去。
+如果一切正常，此时模板已经启动了，请参考 [命令部分](#命令) 正式开始开发。但如果想通过文档了解更多，请先阅读 [主要依赖](#主要依赖) 内链接对应的文档，再继续阅读下去。
 
 ## 使用
 
@@ -134,13 +143,13 @@ yarn dev
 
 ### 特性
 
-- 多模式配置示例，支持 development，staging 和 production
-- 国际化配置示例，支持 en 和 zh-Hans
+- 多模式配置示例，支持 `development`，`staging` 和 `production`
+- 国际化配置示例，支持 `en` 和 `zh-Hans`
 - 路由配置示例
 - 状态管理配置示例
 - 请求配置示例
 - 布局示例
-- electron 示例
+- `electron` 示例
 
 ### 命令
 
@@ -148,14 +157,14 @@ yarn dev
 
 |命令|含义|
 |-|-|
-|`yarn dev`|development 模式启动项目|
-|`yarn staging-build`|staging 模式打包项目|
-|`yarn build`|production 模式打包项目|
-|`yarn electron:dev`|electron development 模式启动项目|
-|`yarn electron:staging-build`|electron staging 模式打包项目|
-|`yarn electron:build`|electron production 模式打包项目|
+|`yarn dev`|`development` 模式启动项目|
+|`yarn staging-build`|`staging` 模式打包项目|
+|`yarn build`|`production` 模式打包项目|
+|`yarn electron:dev`|使用 `electron`，`development` 模式启动项目|
+|`yarn electron:staging-build`|使用 `electron`，`staging` 模式打包项目|
+|`yarn electron:build`|使用 `electron`，`production` 模式打包项目|
 |`yarn run check`|检查项目依赖版本|
-|`yarn commit`|引导填写 git 提交信息并提交，你需要手动 git add 对应部分后执行该命令|
+|`yarn commit`|引导填写 git 提交信息并提交，你需要手动 `git add` 对应部分后执行该命令|
 |`yarn i18n:report`|获取国际化信息|
 |`yarn test:unit`|单元测试|
 |`yarn lint`|检查 json 文件，脚本文件，样式文件和目录|
@@ -169,6 +178,7 @@ yarn dev
 
 ```sh
 .
+├── .husky                      # husky 配置目录
 ├── public
 ├── src
 │   ├── assets                  # 资产目录
@@ -192,8 +202,10 @@ yarn dev
 │   ├── guard.ts                # 导航守卫
 │   ├── main.ts
 │   └── preload.ts              # electron 预加载文件
+│   └── shims-vue.d.ts          # typescript 定义文件，专用于 vue
 ├── tests                       # 测试内容文件夹
 ├── typings                     # typescript 定义文件夹
+│   └── index.d.ts              # typescript 定义文件，通用
 ├── .browserslistrc             # 浏览器支持列表文件
 ├── .editorconfig
 ├── .env                        # 所有环境都载入的环境变量
@@ -204,6 +216,7 @@ yarn dev
 ├── .eslintrc.js                # eslint 配置文件
 ├── .gitattributes              # git 配置文件
 ├── .gitignore                  # git 配置文件
+├── .lintmdrc.yml               # lint-md 配置文件
 ├── .ls-lint.yml                # ls-lint 配置文件
 ├── .markdownlint.json          # markdownlint 配置文件
 ├── .markdownlintignore         # markdownlint 配置文件
@@ -236,19 +249,19 @@ yarn dev
 
 #### .env.staging
 
-staging 模式下，这个环境变量文件会被载入。
+`staging` 模式下，这个环境变量文件会被载入。
 
-它使用 `VUE_APP_MODE` 指定当前模式为 staging，`NODE_ENV` 指定运行模式为 production。
+它使用 `VUE_APP_MODE` 指定当前模式为 `staging`，`NODE_ENV` 指定运行模式为 `production`。
 
-请区分当前模式和运行模式。当前模式可以由我们任意指定，而运行模式只能是 development，production 和 test 的其中一个，它会影响实际构建的表现和效果。在代码中，你可以根据实际情况，使用它们对代码做差异化处理。
+请区分当前模式和运行模式。当前模式可以由我们任意指定，而运行模式只能是 `development`，`production` 和 `test` 的其中一个，它会影响实际构建的表现和效果。在代码中，你可以根据实际情况，使用它们对代码做差异化处理。
 
-另外，它还指定了项目构建后的 publicPath `VUE_APP_PUBLIC_PATH`，值为 `/`，表示使用根目录。
+另外，它还使用 `VUE_APP_PUBLIC_PATH` 指定了项目构建后的 `publicPath` 为 `/`，表示使用根目录。
 
-而 `VUE_APP_BASE_PATH` 指定了请求的前缀地址，值为 `https://fake.url`，这是一个假地址，在实际使用时需要修改。
+而 `VUE_APP_REQUEST_BASE_URL` 指定了请求的前缀地址，值为 `https://fake.url`，这是一个假地址，在实际使用时需要修改。
 
-.env.development，.env.production 都和 .env.staging 的内容大同小异，在这里不再赘述。
+`.env.development`，`.env.production` 都和 `.env.staging` 的内容大同小异，在这里不再赘述。
 
-如果你还需要添加更多的模式，请参考以上的说明添加对应的环境变量文件。另外，也请修改 package.json 内的 scripts，添加对应的构建命令。
+如果你还需要添加更多的模式，请参考以上的说明添加对应的环境变量文件。另外，还需要修改 `package.json` 内的 `scripts` 字段，以添加对应的构建命令。
 
 ### 国际化配置
 
@@ -258,9 +271,9 @@ staging 模式下，这个环境变量文件会被载入。
 
 你可以在上面两个文件里加入你需要的字段以支持翻译，务必注意字段需要保持一致，也请注意合理地划分字段。
 
-而要引入和 vue3 强绑定的 npm 库的语言包，你可以在 [@/i18n/index.js](./src/i18n/index.js) 内操作。目前已经为 element-plus 添加了语言包，你可以参考着为其他和 vue3 强绑定的 npm 库添加语言包。
+而要引入和 `vue3` 强绑定的 `npm` 库的语言包，你可以在 [@/i18n/index.js](./src/i18n/index.js) 内操作。目前已经为 `element-plus` 添加了语言包，你可以参考着为其他和 `vue3` 强绑定的 `npm` 库添加语言包。
 
-引入和 vue3 不强绑定的 npm 库的语言包，请查看它们的文档说明。
+引入和 `vue3` 不强绑定的 `npm` 库的语言包，请查看它们的文档说明并手动配置。
 
 ### 路由配置
 
@@ -274,33 +287,54 @@ TODO
 
 #### axios 封装
 
-模板封装了 vue-use 提供的 useAxios 组合式函数。你可以修改[封装文件](./src/plugins/request.js)默认的配置以匹配业务。
+模板封装了 `vue-use` 提供的 `useAxios` 组合式函数。你可以调整 [封装文件](./src/plugins/request.js) 默认的配置以匹配业务。
 
 #### proxy
 
-在 development 模式下请求服务器往往会出现跨域问题，因此模板内已经设置了 devServer.proxy，见 [vue.config.js](./vue.config.js) L72。
+在 `development` 运行模式下请求服务器往往会出现跨域问题，因此模板内已经设置了只在 `development` 运行模式下生效的 `devServer.proxy`，见 [vue.config.js](./vue.config.js) L68。
 
-理论上，devServer.proxy 应该与 production 运行模式下的 `VUE_APP_REQUEST_BASE_URL` 一致。
+同时，需要设置 `axios` 的 `baseURL` 为空字符串，否则会导致代理失败，见 [@/composables/useAxios.ts](./src/composables/useAxios.ts) L72。
+
+为了向其它 CLI 靠近，你可以调整 `devServer.proxy`，下面是一个示例。
+
+```js
+// vue.config.js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: process.env.VUE_APP_REQUEST_BASE_URL || 'https://fake.url',
+        changeOrigin: true,
+      },
+    },
+  },
+};
+
+```
+
+一般情况下，`devServer.proxy` 应该与某个 `production` 运行模式下的 `VUE_APP_REQUEST_BASE_URL` 一致。
 
 ### 布局
 
-模板内使用 element-plus 实现了 vuetify 提供的[默认布局](./src/layout/index.vue)。
+模板内使用 `element-plus` 实现了 `vuetify2` [默认布局](./src/layout/index.vue)。
 
-常见的布局可以参考 [Ant Design 示例](https://ant-design.gitee.io/components/layout-cn/)，你可以修改布局组件的属性，或添加对应的样式来调整布局。你也可以参考 vuetify 官网。
+常见的布局可以参考 [Ant Design 示例](https://ant.design/components/layout-cn/) 和 [@ant-design/pro-layout](https://procomponents.ant.design/components/layout)，你可以修改布局组件的属性，或添加对应的样式来调整布局。你也可以参考 `vuetify` 官网。
 
-我们会试图让布局适用于所有页面。试想这么一个情况：登录页面只显示 `el-main` 部分，而在其它页面显示所有部分。直接使用默认布局是不能实现的，所以有必要根据不同的路由来调整布局组件，只需要获取当前路由信息并加以判断即可。
+我们会试图让布局适用于所有页面。试想这么一个情况：登录页面只显示 `el-main` 部分，而在其它页面显示所有部分。直接使用默认布局是不能实现的，所以有必要根据不同的路由来调整布局组件，只需要 [获取当前路由信息](https://next.router.vuejs.org/zh/api/#useroute) 并加以判断即可。
 
-我们也可能根据用户角色生成路由和侧边栏，模板内置的该部分功能较为薄弱，且思路源自 vue-element-admin，请查看 vue-element-admin [路由和侧边栏](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html)和[权限验证](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/permission.html)阐述的思路。
+我们也可能根据用户角色生成路由和侧边栏，模板内置的该部分功能较为薄弱，且思路源自 [vue-element-admin](https://github.com/PanJiaChen/vue-element-admin)，请查看 vue-element-admin [路由和侧边栏](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/router-and-nav.html) 和 [权限验证](https://panjiachen.github.io/vue-element-admin-site/zh/guide/essentials/permission.html) 阐述的思路。
+
+也推荐你学习 [vue-vben-admin](https://github.com/anncwb/vue-vben-admin) 源码。
 
 ### electron
 
-模板默认集成 electron，你可以快速开始你的 electron 开发。
+模板默认集成 `electron`，你可以快速开始 `electron` 开发。
 
-模板内提供了 ipc 的演示示例，请全局搜索 ipc 查看。
+模板内提供了 `ipc` 的演示示例，请全局搜索 `ipc` 查看。
 
 ### VSCode 支持
 
-你可以参考[插件](https://www.yuque.com/modyqyw/environment/skhbfr)和 [settings.json](https://www.yuque.com/modyqyw/environment/aozv2q)。
+你可以参考 [插件](https://www.yuque.com/modyqyw/environment/skhbfr) 和 [settings.json](https://www.yuque.com/modyqyw/environment/aozv2q)。
 
 ### 测试
 
@@ -308,11 +342,11 @@ TODO
 
 如果需要添加单元测试，请先学习 [Jest](https://jestjs.io/)。
 
-如果需要添加其它测试，请查看[文档说明](https://cn.vuejs.org/v2/guide/testing.html)。
+如果需要添加其它测试，请查看 [文档说明](https://cn.vuejs.org/v2/guide/testing.html)。
 
 ### 部署
 
-- 确认所有和[模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)相关的地方已经配置完成。
+- 确认所有和 [模式和环境变量](https://cli.vuejs.org/zh/guide/mode-and-env.html)相关的地方已经配置完成。
 - 运行对应的命令，然后上传 `dist` 目录下的内容，默认会生成报告。
 
 ### 浏览器支持
