@@ -4,6 +4,5 @@ not dead
 chrome >= 56
 firefox >= 51
 safari >= 10
-ie >= 11
 android >= 6
 ios >= 10
