@@ -22,6 +22,9 @@ module.exports = {
         fix: true,
       },
     ]);
+    config.resolve.alias
+      .set('@@', path.resolve(''))
+      .set('@', path.resolve('src'));
     config.when(process.env.NODE_ENV === 'production', (config_) => {
       config_
         .plugin('compression')
