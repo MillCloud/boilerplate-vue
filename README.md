@@ -65,17 +65,8 @@ nvm install 12
 nvm alias default 12
 # 安装 yarn
 npm i -g yarn --registry=https://registry.npm.taobao.org
-
-```
-
-接着，请参考以下任一帮助安装 Homebrew。
-
-- [清华大学开源软件镜像站 Homebrew / Linuxbrew 镜像使用帮助](https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/)
-- [中国科学技术大学开源镜像站 Homebrew 源使用帮助](https://mirrors.ustc.edu.cn/help/brew.git.html)
-
-最后，安装 Git 并修改默认配置。
-
-```sh
+# 安装 homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 # 安装 git
 brew install git
 # 不自动转换换行符
@@ -89,7 +80,7 @@ git config --global init.defaultBranch main
 
 首先安装 [nvm-windows](https://github.com/coreybutler/nvm-windows/releases/download/1.1.7/nvm-setup.zip) 和 [Git](https://git-scm.com/downloads)。
 
-如果你正在使用 [Chocolatey](https://chocolatey.org/) 或 [Scoop](https://scoop.sh/)，你也可以通过命令安装。
+如果你正在使用 [Chocolatey](https://chocolatey.org/) 或 [Scoop](https://scoop.sh/)，你也可以通过命令安装，然后配置。
 
 ```sh
 # 使用 Chocolatey
@@ -100,11 +91,6 @@ choco install git
 scoop install nvm
 scoop install git
 
-```
-
-然后配置即可。
-
-```sh
 # 不自动转换换行符
 git config --global core.autocrlf false
 # 设置默认分支名为 main
@@ -112,9 +98,9 @@ git config --global init.defaultBranch main
 # 设置 nvm 镜像
 nvm node_mirror https://npm.taobao.org/mirrors/node/
 # 安装 node@12
-nvm install 12.22.0
+nvm install 12.22.1
 # 使用 node@12
-nvm use 12.22.0
+nvm use 12.22.1
 # 安装 yarn
 npm i -g yarn --registry=https://registry.npm.taobao.org
 
