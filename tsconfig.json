@@ -13,8 +13,8 @@
     "baseUrl": ".",
     "typeRoots": ["./node_modules/@types", "./typings", "./src/typings"],
     "paths": {
-      "@@/*": ["./*"],
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@@/*": ["./*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"],
     "allowJs": true,
