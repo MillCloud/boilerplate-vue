@@ -16,31 +16,29 @@
 - [vue-router](https://next.router.vuejs.org/zh/)
 - [vuex](https://next.vuex.vuejs.org/)
 - [vue-use](https://vueuse.js.org/)
-- [mitt](https://github.com/developit/mitt#readme)
+- [mitt](https://github.com/developit/mitt)
 - [electron](https://www.electronjs.org/)
 - [electron-builder](https://www.electron.build/)
 - [vue-i18n](https://kazupon.github.io/vue-i18n/zh/)
-- [axios](https://github.com/axios/axios#readme)
-- [element-plus](https://element-plus.org/) - 模板之后会切换到 `vuetify3`，你可以考虑使用 [element-plus](https://element-plus.org/#/zh-CN) / [and-vue2](https://2x.antdv.com/docs/vue/introduce-cn) + [nut-ui3](https://nutui.jd.com/3x/)
-- [lodash](https://lodash.com/)
-- [xe-utils](https://github.com/x-extends/xe-utils#readme)
+- [axios](https://github.com/axios/axios)
+- [axios-retry](https://github.com/softonic/axios-retry)
+- [element-plus](https://element-plus.org/) - 模板之后会切换到 `vuetify3`，你可以考虑使用 [element-plus](https://element-plus.org/#/zh-CN) / [antdv2](https://2x.antdv.com/docs/vue/introduce-cn) + [nut-ui3](https://nutui.jd.com/3x/)
+- [@modyqyw/utils](https://github.com/modyqyw/utils)
 - [dayjs](https://dayjs.gitee.io/zh-CN/)
 - [nprogress](https://ricostacruz.com/nprogress/)
 - [mock.js](http://mockjs.com/)
 - [sass](https://sass-lang.com/) - 使用了 [dart-sass](https://sass-lang.com/dart-sass)
 - [jest](https://jestjs.io/)
+- [@modyqyw/fabric](https://github.com/ModyQyW/fabric)
 - [commitizen](http://commitizen.github.io/cz-cli/)
 - [commitlint](https://commitlint.js.org/)
 - [prettier](https://prettier.io/)
-- [markdownlint](https://github.com/igorshubovych/markdownlint-cli#readme)
-- [lint-md](https://github.com/lint-md/lint-md#readme)
+- [markdownlint](https://github.com/igorshubovych/markdownlint-cli)
 - [eslint](https://eslint.org/)
 - [stylelint](https://stylelint.io/)
-- [ls-lint](https://ls-lint.org/)
-- [husky](https://github.com/typicode/husky#readme)
-- [lint-staged](https://github.com/okonet/lint-staged#readme)
-- [@modyqyw/fabric](https://github.com/ModyQyW/fabric#readme)
-- [npm-check-updates](https://github.com/raineorshine/npm-check-updates#readme)
+- [husky](https://github.com/typicode/husky)
+- [lint-staged](https://github.com/okonet/lint-staged)
+- [npm-check-updates](https://github.com/raineorshine/npm-check-updates)
 
 请先阅读上面的文档，并确保对 `node` 和 `npm` 有 [基本了解](http://nodejs.cn/learn)。
 
@@ -204,8 +202,6 @@ yarn dev
 ├── .eslintrc.js                # eslint 配置文件
 ├── .gitattributes              # git 配置文件
 ├── .gitignore                  # git 配置文件
-├── .lintmdrc.yml               # lint-md 配置文件
-├── .ls-lint.yml                # ls-lint 配置文件
 ├── .markdownlint.json          # markdownlint 配置文件
 ├── .markdownlintignore         # markdownlint 配置文件
 ├── .npmrc                      # npm 镜像文件
@@ -275,7 +271,7 @@ TODO
 
 #### axios 封装
 
-模板封装了 `vue-use` 提供的 `useAxios` 组合式函数。你可以调整 [封装文件](./src/plugins/request.js) 默认的配置以匹配业务。
+模板封装了 `vue-use` 提供的 `useAxios` 组合式函数，并使用 `axios-retry` 做自动重试。你可以调整 [封装文件](./src/plugins/request.js) 默认的配置以匹配业务。
 
 #### proxy
 
