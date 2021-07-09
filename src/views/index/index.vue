@@ -14,7 +14,6 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
-import { useAxios } from '@/composables';
 
 export default defineComponent({
   name: 'Index',
