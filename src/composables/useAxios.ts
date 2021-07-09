@@ -30,7 +30,7 @@ const handleShowError = (response: IResponse) => {
   }
 };
 
-const defaultConfig: AxiosRequestConfig = {
+const instance = axios.create({
   baseURL: process.env.VUE_APP_REQUEST_BASE_URL || '',
   timeout: JSON.parse(process.env.VUE_APP_REQUEST_TIMEOUT || '10000') || 10000,
   headers: {
@@ -42,11 +42,11 @@ const defaultConfig: AxiosRequestConfig = {
   withCredentials: false,
   responseType: 'json',
   validateStatus: handleValidateStatusCode,
-};
+});
 
-axiosRetry(axios, { retryDelay: axiosRetry.exponentialDelay });
+axiosRetry(instance, { retryDelay: axiosRetry.exponentialDelay });
 
-axios.interceptors.request.use((config) => ({
+instance.interceptors.request.use((config) => ({
   ...config,
   headers: {
     ...config.headers,
@@ -54,7 +54,7 @@ axios.interceptors.request.use((config) => ({
   },
 }));
 
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   (response) => {
     const { data, config } = response;
     if (!data.success && (config as IRequestConfig).showError !== false) {
@@ -115,5 +115,5 @@ axios.interceptors.response.use(
 );
 
 export function useAxios(url: string, config?: IRequestConfig) {
-  return useIntegrationsAxios<IResponse>(url, { ...defaultConfig, ...config });
+  return useIntegrationsAxios<IResponse>(url, { ...config }, instance);
 }
