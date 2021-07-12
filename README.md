@@ -21,6 +21,9 @@
 - [electron-builder](https://www.electron.build/)
 - [vue-i18n](https://kazupon.github.io/vue-i18n/zh/)
 - [axios](https://github.com/axios/axios)
+- [axios-cache-adapter](https://github.com/RasCarlito/axios-cache-adapter)
+- [axios-logger](https://github.com/hg-pyun/axios-logger)
+- [axios-mock-adapter](https://github.com/ctimmerm/axios-mock-adapter)
 - [axios-retry](https://github.com/softonic/axios-retry)
 - [element-plus](https://element-plus.org/) - 模板之后会切换到 `vuetify3`，你可以考虑使用 [element-plus](https://element-plus.org/#/zh-CN) / [antdv2](https://2x.antdv.com/docs/vue/introduce-cn) + [nut-ui3](https://nutui.jd.com/3x/)
 - [@modyqyw/utils](https://github.com/modyqyw/utils)
@@ -271,7 +274,7 @@ TODO
 
 #### axios 封装
 
-模板封装了 `vue-use` 提供的 `useAxios` 组合式函数，并使用 `axios-retry` 做自动重试。你可以调整 [封装文件](./src/plugins/request.js) 默认的配置以匹配业务。
+模板封装了 `vue-use` 提供的 `useAxios` 组合式函数，另外还添加了拦截器和适配器以实现自动日志、缓存、重试。你可以调整 [封装文件](./src/plugins/request.js) 默认的配置以匹配业务。
 
 #### proxy
 
