@@ -1,8 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useAxios as useIntegrationsAxios } from '@vueuse/integrations';
-import packageInfo from '@/../package.json';
+import pkg from '@@/package.json';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
+import { setupCache } from 'axios-cache-adapter';
+import axiosLogger from 'axios-logger';
 import axiosRetry from 'axios-retry';
 import statuses from 'statuses';
 import { constantCase } from '@modyqyw/utils';
@@ -10,15 +12,13 @@ import { useToken } from './useToken';
 
 declare interface IRequestConfig extends AxiosRequestConfig {
   showError?: boolean;
+  clearCacheEntry?: boolean;
 }
 
 const { t } = useI18n();
 const router = useRouter();
 
 const reLaunchCodes = new Set(['TOKEN_OUTDATED']);
-
-const handleValidateStatusCode = (statusCode: number) =>
-  (statusCode >= 200 && statusCode < 300) || statusCode === 304;
 
 /** @desc 错误统一处理方法 */
 const handleShowError = (response: IResponse) => {
@@ -37,14 +37,21 @@ const instance = axios.create({
     Accept: 'application/json',
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest',
-    'X-Version': `${packageInfo.name}/${packageInfo.version}`,
+    'X-Version': `${pkg.name}/${pkg.version}`,
   },
-  withCredentials: false,
-  responseType: 'json',
-  validateStatus: handleValidateStatusCode,
+  adapter: setupCache({
+    maxAge: 15 * 60 * 1000,
+    invalidate: async (config, request) => {
+      if (request.clearCacheEntry) {
+        try {
+          // @ts-ignore
+          await config.store.removeItem(config.uuid);
+          // eslint-disable-next-line no-empty
+        } catch {}
+      }
+    },
+  }).adapter,
 });
-
-axiosRetry(instance, { retryDelay: axiosRetry.exponentialDelay });
 
 instance.interceptors.request.use((config) => ({
   ...config,
@@ -53,6 +60,11 @@ instance.interceptors.request.use((config) => ({
     'X-Token': useToken().token.value,
   },
 }));
+axiosRetry(instance, { retryDelay: axiosRetry.exponentialDelay });
+instance.interceptors.request.use(
+  (request) => axiosLogger.requestLogger(request, { prefixText: false }),
+  axiosLogger.errorLogger,
+);
 
 instance.interceptors.response.use(
   (response) => {
@@ -77,14 +89,18 @@ instance.interceptors.response.use(
     };
     if (error.response) {
       // 发送了请求且有响应
-      let { status }: { status: number | string } = error.response;
-      if (!handleValidateStatusCode(status as number)) {
+      const { status }: { status: number } = error.response;
+      if (status < 200 || status >= 300) {
         // 状态码不正常
-        status = JSON.stringify(status);
-        response.code = status;
-        response.message = statuses(status)
-          ? t(`error.${constantCase(statuses(status).toString())}`)
-          : t('error.ERROR_OCCURRED');
+        try {
+          response.code = constantCase(statuses(status) as string);
+          response.message = t(
+            `error.${constantCase(statuses(status) as string)}`,
+          );
+        } catch {
+          response.code = 'ERROR_OCCURRED';
+          response.message = t(`error.ERROR_OCCURRED`);
+        }
       } else {
         // 超时
         const timeoutCodes = ['TIMEOUT', 'CONNRESET'];
@@ -112,6 +128,10 @@ instance.interceptors.response.use(
     }
     return response;
   },
+);
+instance.interceptors.response.use(
+  (response) => axiosLogger.responseLogger(response, { prefixText: false }),
+  axiosLogger.errorLogger,
 );
 
 export function useAxios(url: string, config?: IRequestConfig) {
