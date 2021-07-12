@@ -4,7 +4,7 @@ import pkg from '@@/package.json';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { setupCache } from 'axios-cache-adapter';
-import axiosLogger from 'axios-logger';
+import * as AxiosLogger from 'axios-logger';
 import axiosRetry from 'axios-retry';
 import statuses from 'statuses';
 import { constantCase } from '@modyqyw/utils';
@@ -62,8 +62,8 @@ instance.interceptors.request.use((config) => ({
 }));
 axiosRetry(instance, { retryDelay: axiosRetry.exponentialDelay });
 instance.interceptors.request.use(
-  (request) => axiosLogger.requestLogger(request, { prefixText: false }),
-  axiosLogger.errorLogger,
+  (request) => AxiosLogger.requestLogger(request, { prefixText: false }),
+  AxiosLogger.errorLogger,
 );
 
 instance.interceptors.response.use(
@@ -130,8 +130,8 @@ instance.interceptors.response.use(
   },
 );
 instance.interceptors.response.use(
-  (response) => axiosLogger.responseLogger(response, { prefixText: false }),
-  axiosLogger.errorLogger,
+  (response) => AxiosLogger.responseLogger(response, { prefixText: false }),
+  AxiosLogger.errorLogger,
 );
 
 export function useAxios(url: string, config?: IRequestConfig) {
